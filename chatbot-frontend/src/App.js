@@ -56,8 +56,8 @@ function App() {
     <div className="App">
       <div className="chat-container">
         <div className="chat-header">
-          <h2>Math Tutor AI</h2>
-          <p>Ask me anything about mathematics!</p>
+          <h2>Welcome to Student Connect</h2>
+          <p>Please state your RMIT related query :)</p>
         </div>
         
         <div className="messages-container">
