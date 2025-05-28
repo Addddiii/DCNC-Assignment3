@@ -7,7 +7,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [sessionId] = useState(() => Math.random().toString(36).substr(2, 9));
+  const [sessionId] = useState(() => Math.random().toString(36).substring(2, 11));
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -21,7 +21,7 @@ function App() {
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
 
-    const userMessage = { role: 'user', content: input };
+    const userMessage = { role: 'user', content: input, id: Date.now() + Math.random() };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setLoading(true);
@@ -32,7 +32,7 @@ function App() {
         session_id: sessionId
       });
 
-      const botMessage = { role: 'assistant', content: response.data.response };
+      const botMessage = { role: 'assistant', content: response.data.response, id: Date.now() + Math.random() };
       setMessages(prev => [...prev, botMessage]);
     } catch (error) {
       const errorMessage = { 
@@ -61,8 +61,8 @@ function App() {
         </div>
         
         <div className="messages-container">
-          {messages.map((message, index) => (
-            <div key={index} className={`message ${message.role}`}>
+          {messages.map((message) => (
+            <div key={message.id} className={`message ${message.role}`}>
               <div className="message-content">
                 {message.content}
               </div>
