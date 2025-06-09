@@ -1,0 +1,6 @@
+{
+  "name": "RMIT AI Support Chatbot",
+  "description": "An AI-powered chatbot to assist with RMIT University policies and procedures, using Gemini API and contextual policy documents.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
